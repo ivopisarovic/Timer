@@ -47,13 +47,14 @@ void Event::update(unsigned long now)
 		switch (eventType)
 		{
 			case EVENT_EVERY:
-				(*callback)();
+				functionPointer(context);
 				break;
-
+                        
 			case EVENT_OSCILLATE:
 				pinState = ! pinState;
 				digitalWrite(pin, pinState);
 				break;
+
 		}
 		lastEventTime = now;
 		count++;
